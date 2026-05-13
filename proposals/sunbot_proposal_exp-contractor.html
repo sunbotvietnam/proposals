@@ -1,0 +1,1859 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Khu trải nghiệm sáng tạo Sunbot | Sunbot</title>
+<style>
+:root {
+  --orange:#F97316;
+  --orange-dark:#C2410C;
+  --orange-soft:#FFEDD5;
+  --orange-light:#FFF7ED;
+  --slate:#334155;
+  --muted:#64748B;
+  --line:#FED7AA;
+  --paper:#FFFFFF;
+  --bg:#FFFBF7;
+  --dark:#1E293B;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:linear-gradient(180deg,#FFF7ED 0%,#FFFFFF 34%,#FFFBF7 100%);
+  color:var(--slate);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.66;
+}
+.topbar {
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(16px);
+  background:rgba(255,251,247,.88);
+  border-bottom:1px solid rgba(254,215,170,.85);
+}
+.topbar-inner {
+  max-width:1120px;
+  margin:0 auto;
+  padding:10px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.nav-left,.nav-right { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.nav-title { font-size:13px; font-weight:900; color:#9A3412; }
+.btn {
+  appearance:none;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#9A3412;
+  border-radius:999px;
+  padding:8px 12px;
+  font-weight:800;
+  font-size:13px;
+  text-decoration:none;
+  cursor:pointer;
+}
+.btn.primary {
+  background:var(--orange);
+  border-color:var(--orange);
+  color:#fff;
+}
+.btn:hover { filter:brightness(.98); transform:translateY(-1px); }
+.page {
+  max-width:1120px;
+  margin:0 auto;
+  padding:30px 24px 56px;
+}
+.hero {
+  background:linear-gradient(135deg,#ffffff 0%,#fff7ed 58%,#ffedd5 100%);
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:34px;
+  box-shadow:0 20px 60px rgba(194,65,12,.08);
+}
+.brand {
+  display:flex; align-items:center; gap:14px; margin-bottom:26px;
+}
+.logo {
+  width:54px;height:54px;object-fit:contain;border-radius:16px;background:#fff;padding:7px;border:1px solid var(--line);
+}
+.kicker {
+  margin:0;
+  color:var(--orange-dark);
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.12em;
+  font-size:13px;
+}
+.brand-title { margin:0; font-size:18px; font-weight:900; color:#1E293B; }
+h1 {
+  margin:0 0 12px;
+  font-size:42px;
+  line-height:1.12;
+  color:#1E293B;
+  letter-spacing:-.04em;
+}
+.subtitle {
+  max-width:780px;
+  margin:0;
+  font-size:18px;
+  color:#475569;
+}
+.badges {
+  display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;
+}
+.badge {
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--line);
+  color:#9A3412;
+  font-size:13px;
+  font-weight:800;
+}
+.notice {
+  margin:24px 0 0;
+  padding:16px 18px;
+  background:#fff;
+  border:1px dashed var(--orange);
+  border-radius:18px;
+  color:#7C2D12;
+  font-weight:700;
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:22px 0 20px;
+}
+.card {
+  background:#fff;
+  border:1px solid #FFE4C7;
+  border-radius:20px;
+  padding:16px;
+}
+.card-label {
+  margin:0 0 6px;
+  color:var(--muted);
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-weight:900;
+}
+.card-value { margin:0; font-weight:900; color:#1E293B; }
+.layout {
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:18px;
+  align-items:start;
+}
+.toc {
+  position:sticky;
+  top:70px;
+  background:#fff;
+  border:1px solid #FFE4C7;
+  border-radius:22px;
+  padding:16px;
+  max-height:calc(100vh - 92px);
+  overflow:auto;
+}
+.toc h3 {
+  margin:0 0 10px;
+  color:#1E293B;
+  font-size:16px;
+}
+.toc a {
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  text-decoration:none;
+  color:#475569;
+  padding:9px 8px;
+  border-radius:12px;
+  font-size:13px;
+  line-height:1.35;
+}
+.toc a:hover {
+  background:#FFF7ED;
+  color:#9A3412;
+}
+.toc span {
+  min-width:26px;
+  height:26px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#FFEDD5;
+  color:#9A3412;
+  font-weight:900;
+  font-size:11px;
+}
+.proposal-section {
+  display:grid;
+  grid-template-columns:76px 1fr;
+  gap:18px;
+  margin:18px 0;
+  background:#fff;
+  border:1px solid #FFE4C7;
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 8px 30px rgba(15,23,42,.04);
+  scroll-margin-top:86px;
+}
+.section-index {
+  width:54px;height:54px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--orange);
+  color:#fff;
+  font-weight:900;
+  font-size:18px;
+}
+.section-purpose {
+  margin:0 0 5px;
+  color:var(--orange-dark);
+  font-size:13px;
+  font-weight:900;
+}
+h2 {
+  margin:0 0 10px;
+  color:#1E293B;
+  font-size:25px;
+  line-height:1.25;
+}
+.section-body p:not(.section-purpose) {
+  margin:0;
+  font-size:16px;
+}
+.client-note {
+  display:inline-block;
+  margin-top:16px;
+  font-size:12px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#FFF7ED;
+  color:#9A3412;
+  border:1px solid #FED7AA;
+  font-weight:800;
+}
+.section-actions {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.section-actions a {
+  font-size:13px;
+  font-weight:800;
+  color:#C2410C;
+  background:#FFF7ED;
+  border:1px solid #FED7AA;
+  text-decoration:none;
+  border-radius:999px;
+  padding:7px 10px;
+}
+.footer {
+  margin-top:32px;
+  padding:22px;
+  border-radius:22px;
+  background:#1E293B;
+  color:#E2E8F0;
+}
+.footer b { color:#fff; }
+.footer p { margin:6px 0; }
+.mobile-bottom {
+  display:none;
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:30;
+  background:#fff;
+  border:1px solid #FED7AA;
+  border-radius:18px;
+  padding:8px;
+  box-shadow:0 18px 50px rgba(15,23,42,.18);
+}
+.mobile-bottom .btn { flex:1; text-align:center; }
+@media print {
+  .topbar,.toc,.mobile-bottom,.section-actions { display:none !important; }
+  body { background:#fff; }
+  .page { max-width:none; padding:0; }
+  .layout { display:block; }
+  .hero,.proposal-section,.card,.footer { box-shadow:none; break-inside:avoid; }
+  .proposal-section { page-break-inside:avoid; }
+}
+@media (max-width:920px) {
+  .layout { grid-template-columns:1fr; }
+  .toc { position:relative; top:auto; max-height:none; }
+  .grid { grid-template-columns:1fr; }
+  .proposal-section { grid-template-columns:1fr; }
+  h1 { font-size:32px; }
+  .mobile-bottom { display:flex; gap:8px; }
+  .nav-title { display:none; }
+}
+</style>
+<script>
+function goBackSmart() {
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = 'index.html';
+  }
+}
+function printProposal() {
+  window.print();
+}
+</script>
+</head>
+<body id="top">
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="nav-left">
+      <button class="btn" onclick="goBackSmart()">← Quay lại</button>
+      <a class="btn" href="index.html">Danh sách tài liệu</a>
+      <a class="btn" href="#top">Lên đầu</a>
+    </div>
+    <div class="nav-title">Khu trải nghiệm sáng tạo Sunbot</div>
+    <div class="nav-right">
+      <button class="btn primary" onclick="printProposal()">In / Lưu PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="hero">
+    <div class="brand">
+      <img class="logo" src="https://static.sunbot.vn/static/images/lesson/11461/logo-sunbot-1.png" alt="Sunbot logo" />
+      <div>
+        <p class="kicker">Sunbot</p>
+        <p class="brand-title">Hệ sinh thái giáo dục công nghệ</p>
+      </div>
+    </div>
+    <h1>Khu trải nghiệm sáng tạo Sunbot</h1>
+    <p class="subtitle">Tài liệu định hướng giải pháp dành cho Thư viện / nhà thầu / chủ đầu tư.</p>
+    <div class="badges">
+      <span class="badge">Dành cho khu trải nghiệm</span>
+      <span class="badge">Bản định hướng giải pháp, chưa kèm chi phí</span>
+    </div>
+    <div class="notice">Tài liệu này dùng để thống nhất giải pháp và phạm vi trao đổi ban đầu. Chi phí chi tiết sẽ được lập riêng sau khi chốt cấu hình phù hợp.</div>
+  </header>
+
+  <div class="grid">
+    <div class="card"><p class="card-label">Đối tượng</p><p class="card-value">Thư viện / nhà thầu / chủ đầu tư</p></div>
+    <div class="card"><p class="card-label">Tính chất tài liệu</p><p class="card-value">Bản định hướng giải pháp, chưa kèm chi phí</p></div>
+    <div class="card"><p class="card-label">Cập nhật</p><p class="card-value">2026-05-13</p></div>
+  </div>
+
+  <div class="layout">
+    <aside class="toc">
+      <h3>Nội dung chính</h3>
+      <a href="#s1-b-i-c-nh-xu-t"><span>01</span>Bối cảnh đề xuất</a><a href="#s2-sunbot-l-g"><span>02</span>Sunbot là gì</a><a href="#s3-kh-ng-ph-i-khu-vui-ch-i-c-ng-ngh"><span>03</span>Không phải khu vui chơi công nghệ</a><a href="#s4-h-nh-tr-nh-tr-i-nghi-m-c-a-tr"><span>04</span>Hành trình trải nghiệm của trẻ</a><a href="#s5-c-u-tr-c-kh-ng-gian-xu-t"><span>05</span>Cấu trúc không gian đề xuất</a><a href="#s6-n-m-l-p-th-nh-ph-n-gi-i-ph-p"><span>06</span>Năm lớp thành phần giải pháp</a><a href="#s7-ph-m-vi-sunbot-v-nh-th-u"><span>07</span>Phạm vi Sunbot và nhà thầu</a><a href="#s8-b-c-ti-p-theo"><span>08</span>Bước tiếp theo</a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a><a href="#s-"><span></span></a>
+    </aside>
+    <main>
+      
+        <section class="proposal-section" id="s1-b-i-c-nh-xu-t">
+          <div class="section-index">01</div>
+          <div class="section-body">
+            <p class="section-purpose">Đặt vấn đề theo khách cụ thể nhưng không khóa vào số liệu cứng</p>
+            <h2>Bối cảnh đề xuất</h2>
+            <p>Trong bối cảnh các thư viện và không gian giáo dục công cộng cần tạo thêm sức hút với trẻ em, Sunbot có thể được đề xuất như một giải pháp làm mới khu thiếu nhi: chuyển từ không gian đọc tĩnh sang điểm đến trải nghiệm tri thức, nơi trẻ được lập trình robot, chế tạo STEAM, khám phá chủ đề văn hóa – địa phương và lưu lại dấu ấn học tập.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s2-sunbot-l-g">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s2-sunbot-l-g">
+          <div class="section-index">02</div>
+          <div class="section-body">
+            <p class="section-purpose">Giới thiệu lõi hệ sinh thái, tránh bị hiểu là robot/học cụ rời</p>
+            <h2>Sunbot là gì</h2>
+            <p>Sunbot là hệ sinh thái giáo dục công nghệ dành cho trẻ em, kết hợp chương trình học, robot, học cụ STEAM, nội dung số, đào tạo người điều phối/giáo viên, quy trình triển khai và hệ thống ghi nhận dấu ấn học tập. Giá trị của Sunbot nằm ở khả năng tổ chức hoạt động giáo dục có cấu trúc, chứ không chỉ ở thiết bị hay học cụ riêng lẻ.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              <a href="#s1-b-i-c-nh-xu-t">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s3-kh-ng-ph-i-khu-vui-ch-i-c-ng-ngh">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s3-kh-ng-ph-i-khu-vui-ch-i-c-ng-ngh">
+          <div class="section-index">03</div>
+          <div class="section-body">
+            <p class="section-purpose">Định vị khác biệt so với khu vui chơi, phòng trưng bày, mua thiết bị</p>
+            <h2>Không phải khu vui chơi công nghệ</h2>
+            <p>Khu trải nghiệm Sunbot không phải khu vui chơi công nghệ tự do, cũng không phải phòng trưng bày robot tĩnh. Đây là mô hình hoạt động giáo dục có nội dung, kịch bản, học cụ, người điều phối và mục tiêu học tập. Trẻ không chỉ &#x27;xem&#x27; công nghệ, mà được tham gia nhiệm vụ, thử nghiệm, chế tạo, kể lại và ghi nhớ qua hành động.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              <a href="#s2-sunbot-l-g">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s4-h-nh-tr-nh-tr-i-nghi-m-c-a-tr">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s4-h-nh-tr-nh-tr-i-nghi-m-c-a-tr">
+          <div class="section-index">04</div>
+          <div class="section-body">
+            <p class="section-purpose">Mô tả trải nghiệm vận hành, nhưng tránh cam kết cứng</p>
+            <h2>Hành trình trải nghiệm của trẻ</h2>
+            <p>Tùy cấu hình không gian và nhóm khách tham gia, một buổi trải nghiệm Sunbot có thể được thiết kế theo hành trình 60–90 phút gồm các chặng: làm quen chủ đề, thực hiện thử thách robot, chế tạo STEAM, ghi nhận kết quả và tổng kết dấu ấn. Cách tổ chức này giúp trẻ đi qua đủ chu trình: hiểu nhiệm vụ, làm thử, điều chỉnh, hoàn thiện và chia sẻ.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              <a href="#s3-kh-ng-ph-i-khu-vui-ch-i-c-ng-ngh">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s5-c-u-tr-c-kh-ng-gian-xu-t">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s5-c-u-tr-c-kh-ng-gian-xu-t">
+          <div class="section-index">05</div>
+          <div class="section-body">
+            <p class="section-purpose">Giúp nhà thầu/chủ đầu tư hình dung layout hoạt động</p>
+            <h2>Cấu trúc không gian đề xuất</h2>
+            <p>Không gian trải nghiệm có thể chia theo các vùng chức năng: khu định hướng/điều phối, khu robot và nhiệm vụ, khu STEAM/sáng tạo, khu khám phá tri thức, khu thành quả/check-in. Cấu trúc modulable giúp không gian linh hoạt thay đổi theo đoàn trường, workshop cuối tuần, hoạt động gia đình hoặc sự kiện chuyên đề.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              <a href="#s4-h-nh-tr-nh-tr-i-nghi-m-c-a-tr">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s6-n-m-l-p-th-nh-ph-n-gi-i-ph-p">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s6-n-m-l-p-th-nh-ph-n-gi-i-ph-p">
+          <div class="section-index">06</div>
+          <div class="section-body">
+            <p class="section-purpose">Biến ý tưởng thành cấu hình có thể báo giá sau</p>
+            <h2>Năm lớp thành phần giải pháp</h2>
+            <p>Giải pháp khu trải nghiệm Sunbot có thể được đóng gói theo 5 lớp: 1. Lõi Sunbot gồm robot, sa bàn, thẻ lệnh và học cụ nền; 2. Nội dung trải nghiệm theo chủ đề; 3. Nội dung bản địa hóa theo địa phương hoặc câu chuyện của đơn vị; 4. Không gian và SOP vận hành; 5. Trải nghiệm nâng cao như hộ chiếu STEAM, sticker, leaderboard, recap ảnh hoặc hoạt động sự kiện.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              <a href="#s5-c-u-tr-c-kh-ng-gian-xu-t">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s7-ph-m-vi-sunbot-v-nh-th-u">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s7-ph-m-vi-sunbot-v-nh-th-u">
+          <div class="section-index">07</div>
+          <div class="section-body">
+            <p class="section-purpose">Kiểm soát scope, tránh Sunbot ôm thi công/nội thất ngoài năng lực</p>
+            <h2>Phạm vi Sunbot và nhà thầu</h2>
+            <p>Trong phương án dự án, cần tách rõ phần Sunbot và phần nhà thầu/đối tác. Sunbot dự kiến phụ trách phần nội dung, chương trình, học cụ, robot/STEAM, kịch bản vận hành, tài liệu hướng dẫn và đào tạo. Nhà thầu/đối tác có thể phụ trách thi công, nội thất, thiết bị trình chiếu/âm thanh, hồ sơ thầu, vận chuyển/lắp đặt và các hạng mục địa phương khác, tùy cấu hình thống nhất.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              <a href="#s6-n-m-l-p-th-nh-ph-n-gi-i-ph-p">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s8-b-c-ti-p-theo">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s8-b-c-ti-p-theo">
+          <div class="section-index">08</div>
+          <div class="section-body">
+            <p class="section-purpose">Kết thúc bằng hành động rõ, vẫn giữ proposal không giá</p>
+            <h2>Bước tiếp theo</h2>
+            <p>Bước tiếp theo nên là chốt cấu hình không gian, số lượng station, nhóm hoạt động ưu tiên, phạm vi hạng mục Sunbot cung cấp và phần nhà thầu/đối tác phụ trách. Sau khi phạm vi được thống nhất, Sunbot sẽ lập price envelope hoặc báo giá riêng theo mã phiên bản, thay vì đưa giá trực tiếp vào proposal không giá này.</p>
+            <div class="client-note">Bản định hướng giải pháp, chưa kèm chi phí</div>
+            <div class="section-actions">
+              <a href="#s7-ph-m-vi-sunbot-v-nh-th-u">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s8-b-c-ti-p-theo">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              <a href="#s-">Mục tiếp theo</a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="proposal-section" id="s-">
+          <div class="section-index"></div>
+          <div class="section-body">
+            <p class="section-purpose"></p>
+            <h2></h2>
+            <p></p>
+            <div class="client-note">Bản giới thiệu giải pháp, báo giá lập riêng</div>
+            <div class="section-actions">
+              <a href="#s-">Mục trước</a>
+              <a href="#top">Lên đầu trang</a>
+              
+            </div>
+          </div>
+        </section>
+        
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p><b>Lưu ý:</b> Nội dung trong tài liệu này nhằm giúp các bên thống nhất cách hiểu về giải pháp Sunbot. Phạm vi cung cấp, điều kiện thương mại và chi phí chi tiết sẽ được thể hiện trong báo giá hoặc thỏa thuận riêng.</p>
+    <p><b>Sunbot:</b> Hệ sinh thái giáo dục công nghệ dành cho trẻ em.</p>
+  </footer>
+</div>
+
+<div class="mobile-bottom">
+  <button class="btn" onclick="goBackSmart()">← Quay lại</button>
+  <a class="btn" href="index.html">Danh sách</a>
+  <button class="btn primary" onclick="printProposal()">PDF</button>
+</div>
+</body>
+</html>
